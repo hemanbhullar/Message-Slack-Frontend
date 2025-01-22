@@ -12,7 +12,6 @@ export const useSignup = () => {
             console.log('Failed to sign up', error);
         }
     });
-
     return {
         isPending,
         isSuccess,
