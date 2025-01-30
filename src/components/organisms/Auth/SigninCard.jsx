@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { LucideLoader2, TriangleAlert } from 'lucide-react';
+import { FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
@@ -11,8 +12,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { LucideLoader2, TriangleAlert } from 'lucide-react';
-import { FaCheck } from 'react-icons/fa';
 
 export const SigninCard = ({
   signinForm,

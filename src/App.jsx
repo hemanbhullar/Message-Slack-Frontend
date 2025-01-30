@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Auth } from '@/pages/Auth/Auth';
 import { NotFound } from '@/pages/NotFound/NotFound';
 
+import { ResetPasswordContainer } from './components/organisms/Auth/ResetPasswordContainer';
 import { SigninContainer } from './components/organisms/Auth/SigninContainer';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/auth/signup' element={<Auth><SignupContainer /></Auth>} />
         <Route path='/auth/signin' element={<Auth><SigninContainer /></Auth>} />
         <Route path='/home' element={<Auth><h1>Home</h1></Auth>} />
+        <Route path='/reset-password/:token' element={<Auth><ResetPasswordContainer /></Auth>} />
         <Route path='/*' element={<NotFound />}/>
       </Routes>
       <Toaster />
