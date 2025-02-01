@@ -1,5 +1,4 @@
 import axios from '@/config/axiosConfig';
-import { toast } from '@/hooks/use-toast';
 
 export const signUpRequest = async ({ email, password, username }) => {
     try {
@@ -32,17 +31,11 @@ export const signInRequest = async ({ email, password }) => {
 
 export const forgotPasswordRequest = async ({ email }) => {
     try {
-        const response = await axios.post('/users/forgot-password', {
+        const response = await axios.post('/users/forgetPassword', {
             email
-        }).then(() => {
-            toast.success('Email sent successfully');
-        }).catch((error) => {
-            if(error.response.status === 404) {
-                toast.error('Email not found');
-            } else{
-                toast.error('Something went wrong');
-            }
         });
+
+        console.log(response.data);
 
         return response.data;
     } catch (error) {
@@ -56,19 +49,19 @@ export const resetPasswordRequest = async ({ password, token }) => {
         const response = await axios.post(`/users/reset-password/${token}`, {
             password
         }).then((response) => {
-            toast.success(response.data.message);
+            console.log(response.data.message);
             setTimeout(() => {
-                window.location.href = '/users/signin';
+                window.location.href = '/auth/signin';
             }, 3000);
         })
-        .catch(()  => {
-            toast.error('Your link has expired. Please try again.');
+        .catch((error)  => {
+             return error;
         }
         );
 
-        return response.data;
+        return response;
     } catch (error) {
         console.log(error);
-        throw error.response.data;
+        throw error;
     }
 };

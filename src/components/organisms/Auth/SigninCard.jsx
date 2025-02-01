@@ -94,6 +94,13 @@ export const SigninCard = ({
                     >
                       Sign Up
                     </span>
+                    <span className='bold text-muted-foreground font-bold'> | </span>
+                    <span 
+                      className='text-sky-600 hover:underline cursor-pointer'
+                      onClick={() => navigate('/auth/forget-password')}
+                    >
+                      Forget Password
+                    </span>
             </p>
         </CardContent>
       </Card>

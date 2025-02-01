@@ -1,4 +1,5 @@
-import {TriangleAlert } from 'lucide-react';
+import {LucideLoader2, TriangleAlert } from 'lucide-react';
+import { FaCheck } from 'react-icons/fa';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -13,6 +14,7 @@ import { Input } from '@/components/ui/input';
 export const ResetPasswordCard = ({
   error,
   isPending,
+  isSuccess,
   resetPasswordForm,
   setResetPasswordForm,
   validationError,
@@ -35,6 +37,14 @@ export const ResetPasswordCard = ({
             <p>{error.message}</p>
           </div>
         )}
+        {isSuccess && (
+                    <div className='bg-primary/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-primary mb-5'>
+                        <FaCheck className='size-5' />
+                        <p>Your password has been changed.
+                            <LucideLoader2 className='animate-spin ml-2'/>
+                        </p>
+                    </div>
+          )}
       </CardHeader>
       <CardContent>
         <form className="space-y-3" onSubmit={onResetPasswordFormSubmit}>

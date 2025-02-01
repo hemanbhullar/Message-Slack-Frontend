@@ -1,33 +1,39 @@
-import { useFormAction } from 'react-router-dom';
+import { useState } from 'react';
 
 import { useForgetPassword } from '@/hooks/apis/auth/useForgetPassword';
-import { useToast } from '@/hooks/use-toast';
+
+import { ForgetPasswordCard } from './ForgetPasswordCard';
 
 export const ForgetPasswordContainer = () => {
-    const { register, handleSubmit } = useFormAction();
-    const { isPending, isSuccess, error, forgotPasswordMutation } = useForgetPassword();
-    const { toast } = useToast();
-  
-    const onSubmit = async (data) => {
-      try {
-        await forgotPasswordMutation(data);
-      } catch (error) {
-        console.log('Failed to send email', error);
-        toast({
-          title: 'Failed to send email',
-          message: error.message,
-          type: 'error',
-          variant: 'destructive'
-        });
-      }
-    };
-  
-    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type='email' name='email' ref={register} />
-        <button type='submit' disabled={isPending}>Submit</button>
-        {isSuccess && <p>Email sent successfully</p>}
-        {error && <p>{error.message}</p>}
-      </form>
-    );
+  const { forgetPasswordMutation, isPending, error } = useForgetPassword();
+
+  const [email, setEmail] = useState('');
+
+  const [validationError, setValidationError] = useState(null);
+
+  async function onForgetPasswordFormSubmit(e) {
+    e.preventDefault();
+
+    if (!email) {
+      setValidationError({ message: 'Email is required' });
+      return;
+    }
+
+    setValidationError(null);
+
+    await forgetPasswordMutation({ email });
+    setEmail('');
+    
+  }
+
+  return (
+    <ForgetPasswordCard 
+    error={error}
+    email={email}
+    setEmail={setEmail}
+    validationError={validationError}
+    isPending={isPending}
+    onForgetPasswordFormSubmit={onForgetPasswordFormSubmit}
+    />
+  );
 };
