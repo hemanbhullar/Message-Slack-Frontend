@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+
+import { Route, Routes} from 'react-router-dom';
 
 import { ForgetPasswordContainer } from '@/components/organisms/Auth/ForgetPasswordContainer';
 import { ResetPasswordContainer } from '@/components/organisms/Auth/ResetPasswordContainer';
@@ -7,7 +8,10 @@ import { SignupContainer } from '@/components/organisms/Auth/SignupContainer';
 import { Auth } from '@/pages/Auth/Auth';
 import { NotFound } from '@/pages/NotFound/NotFound';
 
+import { ProtectedRoute } from './components/molecules/ProtectedRoute/ProtectedRoute';
+
 export const AppRoutes = () => {
+
     return (
         <Routes>
         <Route
@@ -29,9 +33,11 @@ export const AppRoutes = () => {
         <Route
           path="/home"
           element={
+            <ProtectedRoute>
             <Auth>
               <h1>Home</h1>
             </Auth>
+            </ProtectedRoute>
           }
         />
         <Route
