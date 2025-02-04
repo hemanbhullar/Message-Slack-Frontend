@@ -26,7 +26,7 @@ export const ForgetPasswordCard = ({
             {error && (
             <div className="bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
                 <TriangleAlert className="size-5" />
-                <p>{error.message}</p>
+                <p>{error}</p>
             </div>
             )}
         </CardHeader>

@@ -25,7 +25,7 @@ export const signInRequest = async ({ email, password }) => {
         return response.data;
     } catch (error) {
         console.log(error);
-        throw error.response.data;
+        throw error;
     }
 };
 
@@ -40,7 +40,7 @@ export const forgotPasswordRequest = async ({ email }) => {
         return response.data;
     } catch (error) {
         console.log(error);
-        throw error.response.data;
+        throw error.response.data.error;
     }
 };
 
