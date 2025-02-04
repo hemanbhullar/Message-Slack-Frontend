@@ -6,6 +6,7 @@ import { ResetPasswordContainer } from '@/components/organisms/Auth/ResetPasswor
 import { SigninContainer } from '@/components/organisms/Auth/SigninContainer';
 import { SignupContainer } from '@/components/organisms/Auth/SignupContainer';
 import { Auth } from '@/pages/Auth/Auth';
+import { Home } from '@/pages/Home/Home';
 import { NotFound } from '@/pages/NotFound/NotFound';
 
 import { ProtectedRoute } from './components/molecules/ProtectedRoute/ProtectedRoute';
@@ -34,9 +35,7 @@ export const AppRoutes = () => {
           path="/home"
           element={
             <ProtectedRoute>
-            <Auth>
-              <h1>Home</h1>
-            </Auth>
+            <Home />
             </ProtectedRoute>
           }
         />
