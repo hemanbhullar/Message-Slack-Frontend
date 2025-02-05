@@ -1,14 +1,24 @@
 
 
 import { LogOutIcon, SettingsIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useAuth } from '@/hooks/context/useAuth';
 
+
 export const UserButton = () => {
 
     const { auth } = useAuth();
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.clear();
+        navigate('/auth/signin');
+    };
+
     
     return (
        <DropdownMenu>
@@ -22,7 +32,7 @@ export const UserButton = () => {
                     <SettingsIcon className='size-4 mr-2 h-10'/>
                     Settings
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={logout}>
                     <LogOutIcon className='size-4 mr-2 h-10'/>
                     Logout
                 </DropdownMenuItem>
