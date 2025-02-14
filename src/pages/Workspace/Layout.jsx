@@ -1,3 +1,4 @@
+import { SidePanel } from '@/components/organisms/SidePanel/SidePanel';
 import { WorkspaceNavbar } from '@/components/organisms/Workspace/WorkspaceNavbar';
 import { WorkspaceSidebar } from '@/components/organisms/Workspace/WorkspaceSidebar';
 
@@ -7,7 +8,9 @@ export const WorkspaceLayout = ({ children }) => {
             <WorkspaceNavbar />
             <div className="flex h-[calc(100vh-40px)]">
                 <WorkspaceSidebar />
-                {children}
+                <SidePanel>
+                    {children}
+                </SidePanel>     
             </div>
         </div>
     );

@@ -1,17 +1,15 @@
-import { Loader } from "lucide-react";
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Loader } from 'lucide-react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { fetchWorkspacesDetailsRequest } from "@/apis/workspaces";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useFetchWorkspace } from "@/hooks/apis/workspaces/useFetchWorkspace";
-import { useGetWorkspaceById } from "@/hooks/apis/workspaces/useGetWorkspaceById";
+} from '@/components/ui/dropdown-menu';
+import { useFetchWorkspace } from '@/hooks/apis/workspaces/useFetchWorkspace';
+import { useGetWorkspaceById } from '@/hooks/apis/workspaces/useGetWorkspaceById';
 
 export const WorkspaceSwitcher = () => {
   const navigate = useNavigate();
