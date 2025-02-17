@@ -3,6 +3,8 @@ import {
     ResizablePanel,
     ResizablePanelGroup,
   } from '@/components/ui/resizable';
+
+import { WorkspacePanel } from '../Workspace/WorkspacePanel';
   
   export function SidePanel({children}) {
     return (
@@ -11,9 +13,7 @@ import {
         autoSaveId={'workspace-resize'}
       >
         <ResizablePanel defaultSize={20} minSize={11} className='bg-slack-medium'>
-          <div>
-            <span className="font-semibold">Sidebar</span>
-          </div>
+          <WorkspacePanel />
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel minSize={20}>
