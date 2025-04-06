@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +7,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Input } from '@/components/ui/input';
 import { useCreateWorkspace } from '@/hooks/apis/workspaces/useCreateWorkspace';
 import { useCreateWorkspaceModal } from '@/hooks/context/useCreateWorkspaceModal';
-import { useQueryClient } from '@tanstack/react-query';
 
 export const CreateWorkspaceModal = () => {
 
