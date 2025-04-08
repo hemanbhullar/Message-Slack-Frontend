@@ -41,7 +41,7 @@ export const WorkspacePreferencesModal = () => {
     message: 'This action cannot be undone.',
   });
 
-  const [renameValue, setRenameValue] = useState(workspace?.name || '');
+  const [renameValue, setRenameValue] = useState(workspace?.name);
 
 
   function handleClose() {
@@ -50,7 +50,7 @@ export const WorkspacePreferencesModal = () => {
 
   useEffect(() => {
     setWorkspaceId(workspace?._id);
-    setRenameValue(workspace?.name || '');
+    setRenameValue(workspace?.name);
   }, [workspace]);
 
   async function handleDelete() {
@@ -70,8 +70,10 @@ export const WorkspacePreferencesModal = () => {
       });
     } catch (error) {
       console.error('Failed to delete workspace', error);
-    } finally {
-      setOpenPreferences(false);
+      toast({
+        title: 'Error in deleting workspace',
+        type: 'error'
+      });
     }
   }
 
@@ -90,8 +92,11 @@ export const WorkspacePreferencesModal = () => {
       });
     } catch (error) {
       console.error('Failed to update workspace', error);
-    } finally {
-      setEditOpen(false);
+      toast({
+        title: 'Error in updating workspace',
+        type: 'error'
+      });
+
     }
   }
 
@@ -100,8 +105,8 @@ export const WorkspacePreferencesModal = () => {
     <ConfirmDialog />
     <UpdateDialog />
     <Dialog open={openPreferences} onOpenChange={handleClose}>
-      <DialogContent className="p-0 bg-gray-50 overflow-hidden">
-        <DialogHeader className="p-4 border-b bg-white">
+      <DialogContent>
+        <DialogHeader>
           <DialogTitle>{initialValue}</DialogTitle>
         </DialogHeader>
         <div className="px-4 pb-4 flex flex-col gap-y-2">
@@ -127,7 +132,7 @@ export const WorkspacePreferencesModal = () => {
                         value={renameValue}
                         onChange={(e) => setRenameValue(e.target.value)}
                         required
-                        autofocus
+                        autoFocus
                         minLength={3}
                         maxLength={50}
                         disabled={isPending}
