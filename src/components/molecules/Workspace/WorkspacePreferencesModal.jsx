@@ -27,8 +27,7 @@ export const WorkspacePreferencesModal = () => {
   const [workspaceId, setWorkspaceId] = useState(null);
   const [editOpen, setEditOpen] = useState(false);
 
-  const { initialValue, openPreferences, setOpenPreferences, workspace } =
-    useWorkspacePreferencesModal();
+  const { initialValue, openPreferences, setOpenPreferences, workspace } = useWorkspacePreferencesModal();
   const { deleteWorkspaceMutation } = useDeleteWorkspace(workspaceId);
   const { isPending, updateWorkspaceMutation } = useUpdateWorkpsace(workspaceId);
   const {confirmation, ConfirmDialog} = useConfirm({
