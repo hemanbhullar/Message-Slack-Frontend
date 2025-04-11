@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-const WorkspacePreferencesModalContext = createContext();
+const WorkspacePreferencesModalContext =  createContext();
 
 export const WorkspacePreferencesModalContextProvider = ({ children }) => {
     const [openPreferences, setOpenPreferences] = useState(false);
