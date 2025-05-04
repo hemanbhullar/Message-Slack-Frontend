@@ -6,12 +6,12 @@ import { Input } from '@/components/ui/input';
 import { useCreateChannelModal } from '@/hooks/context/useCreateChannelModal';
 
 export const CreateChannelModal = () => {
-    const { openCreateChannelModal, setOpenChannelModal } = useCreateChannelModal();
+    const { openCreateChannelModal, setOpenCreateChannelModal } = useCreateChannelModal();
 
     const [channelName, setChannelName] = useState('');
 
     function handleClose() {
-        setOpenChannelModal(false);
+        setOpenCreateChannelModal(false);
     }
 
     function handleFormSubmit(e) {
